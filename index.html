@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZYRA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #a9a9a9;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Login Box */
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+      margin: 100px auto;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    .success {
+      color: green;
+      margin-top: 10px;
+    }
+
+    /* Inventory */
+    .inventory {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .item {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .item img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+    .item h2 {
+      font-size: 20px;
+      margin: 10px 0 5px;
+    }
+    .item p {
+      margin: 5px 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div id="login-section" class="login-box">
+    <h2>Sign In</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="message"></p>
+  </div>
+
+  <!-- Inventory Section (hidden at first) -->
+  <div id="inventory-section" style="display:none;">
+    <h1>ZYRA</h1>
+
+    <div class="inventory">
+      <div class="item">
+        <img src="images/image1.jpg" alt="Premium Wet Feet">
+        <h2>Premium Wet Feet</h2>
+        <p>Price: $10,000,000</p>
+        <p>Stock: 25</p>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="item">
+        <img src="images/image2.jpeg" alt="Wealthy Pointers">
+        <h2>Wealthy Pointers</h2>
+        <p>Price: $15,000,000</p>
+        <p>Stock: 15</p>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="item">
+        <img src="images/image3.jpeg" alt="Premium Fish fillet">
+        <h2>Premium Fish fillet</h2>
+        <p>Price: $80,000,000</p>
+        <p>Stock: 30</p>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="item">
+        <img src="images/image4.jpeg" alt="Crust Crab">
+        <h2>Crust Crab</h2>
+        <p>Price: $1,200,000</p>
+        <p>Stock: 20</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const users = {
+      "admin": "RickC137",
+      "zee": "RickC137",
+      "guest": "RickC137"
+    };
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      if (users[username] && users[username] === password) {
+        message.textContent = "✅ Login successful!";
+        message.className = "success";
+
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("inventory-section").style.display = "block";
+      } else {
+        message.textContent = "❌ Wrong username or password.";
+        message.className = "error";
+      }
+    }
+  </script>
+
+</body>
+</html>
